@@ -5,8 +5,7 @@ require_once "../src/funcoes-fabricantes.php";
 
 /* Chamando a função por carregar os dados dos fabricantes */
 $listaDeFabricantes = listarFabricantes($conexao);
-?>  
-<pre><?=var_dump($listaDeFabricantes)?></pre>
+?>   
 <!DOCTYPE html>
 <html lang="pt-br">
 
