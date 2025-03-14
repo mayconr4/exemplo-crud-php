@@ -37,10 +37,10 @@ $listaDeFabricantes = listarFabricantes($conexao);
             <tbody> 
 <?php foreach($listaDeFabricantes as $fabricante) {?>
                 <tr>
-                    <td>  </td>
-                    <td> Nome do fabricante 1... </td>
+                    <td> <?= $fabricante["id"]?>  </td>
+                    <td> <?= $fabricante["nome"]?> </td>
                 </tr>  
-<?php }; ?>               
+<?php } ?>               
             </tbody>
         </table>
     </div>
