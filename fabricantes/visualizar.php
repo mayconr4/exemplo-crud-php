@@ -34,19 +34,13 @@ $listaDeFabricantes = listarFabricantes($conexao);
                     <th>Nome</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody> 
+<?php foreach($listaDeFabricantes as $fabricante) {?>
                 <tr>
-                    <td> Identificador do fabricante 1... </td>
+                    <td>  </td>
                     <td> Nome do fabricante 1... </td>
-                </tr>
-                <tr>
-                    <td> Identificador do fabricante 2... </td>
-                    <td> Nome do fabricante 2... </td>
-                </tr>
-                <tr>
-                    <td> Identificador do fabricante 3... </td>
-                    <td> Nome do fabricante 3... </td>
-                </tr>
+                </tr>  
+<?php }; ?>               
             </tbody>
         </table>
     </div>
