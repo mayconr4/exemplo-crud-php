@@ -7,7 +7,14 @@ require_once "../src/funcoes-fabricantes.php";
 $listaDeFabricantes = listarFabricantes($conexao); 
 
 /* Contando os elementos/registros */ 
-$quantidade = count($listaDeFabricantes);
+$quantidade = count($listaDeFabricantes); 
+
+require_once "../src/funcoes-fabricantes.php";
+ 
+$listaDeFabricantes =listarFabricantes($conexao);
+ 
+$quantidade = count($listaDeFabricantes)
+
 ?>   
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -42,7 +49,10 @@ $quantidade = count($listaDeFabricantes);
 <?php foreach($listaDeFabricantes as $fabricante) {?>
                 <tr>
                     <td> <?= $fabricante["id"]?>  </td>
-                    <td> <?= $fabricante["nome"]?> </td>
+                    <td> <?= $fabricante["nome"]?> </td> 
+                    <td>
+                        <a href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a>
+                    </td>
                 </tr>  
 <?php } ?>               
             </tbody>

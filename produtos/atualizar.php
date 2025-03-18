@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -13,7 +14,8 @@
         <h1><a class="btn btn-outline-dark" href="visualizar.php">&lt; Voltar</a> Produtos | SELECT/UPDATE</h1>
         <hr>
 
-        <form action="" method="post" class="w-50">
+        <form action="" method="post" class="w-50"> 
+        
             <div class="mb-3">
                 <label class="form-label" for="nome">Nome:</label>
                 <input class="form-control" type="text" name="nome" id="nome" required>
