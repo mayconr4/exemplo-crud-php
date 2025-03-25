@@ -14,7 +14,7 @@ function listarFabricantes(PDO $conexao)
    /*executadndo o comando no banco de dados*/
    $consulta->execute();
  
-   /*busca/retorna  todos os dadod provenientes da execução da consulta e os transforma em array associativo*/
+   /*busca/retorna  todos os dados provenientes da execução da consulta e os transforma em array associativo*/
    return $consulta->fetchall(PDO::FETCH_ASSOC);
  
    } catch (Exception $erro) {
@@ -50,7 +50,7 @@ function listarUmFabricante(PDO $conexao, int $idfabricante):array {
       $consulta->bindValue(":id", $idfabricante, PDO::PARAM_INT);
       $consulta->execute();
  
-      /*usamos o fetch para garantir o retorno de um unicp array associativo com o resultado*/
+      /*usamos o fetch para garantir o retorno de um unico array associativo com o resultado*/
  
       return $consulta->fetch(PDO::FETCH_ASSOC);
    }  catch (Exception $erro) {
@@ -61,6 +61,16 @@ function listarUmFabricante(PDO $conexao, int $idfabricante):array {
  
 // atualizarFabricante
 function atualizarFabricante(PDO $conexao, $idFabricante, $nomeFabricante):void {
-   $sql = "UPDATE fabricantes SET nome WHERE :id";
+   $sql = "UPDATE fabricantes SET nome = :nome WHERE id = :id"; 
+
+   try{ 
+       $consulta = $conexao->prepare($sql); 
+       $consulta->bindValue(":nome", $nomeFabricante, PDO::PARAM_STR);  
+       $consulta->bindValue(":id", $idFabricante, PDO::PARAM_INT); 
+       $consulta->execute();
+       
+   } catch (Exception $erro){ 
+      die("Erro ao atualizar fabricante: ".$erro->getMessage());
+   }
 }
  

@@ -38,21 +38,27 @@ $quantidade = count($listaDeFabricantes)
 
         <table class="table table-hover table-bordered w-50">
             <caption>Lista de fabricantes: <?=$quantidade?> </caption>
-            <caption>Lista de Fabricantes</caption>
+            <caption>Lista de Fabricantes</caption>  
+            
+            <!-- Parametro da url -->
             <thead class="table-light">
                 <tr>
                     <th>ID</th>
-                    <th>Nome</th>
+                    <th>Nome</th> 
+                    <th>Operações</th>
                 </tr>
             </thead>
             <tbody> 
 <?php foreach($listaDeFabricantes as $fabricante) {?>
-                <tr>
+                <tr> 
+                   
                     <td> <?= $fabricante["id"]?>  </td>
-                    <td> <?= $fabricante["nome"]?> </td> 
-                    <td>
-                        <a href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a>
-                    </td>
+                    <td> <?= $fabricante["nome"]?> </td>  
+                    <td> 
+                        <a class=" btn btn-warning btn-sm" href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a> 
+
+                         <a class=" btn btn-danger btn-sm" href="excluir.php?id=<?=$fabricante['id']?>">Excluir</a>
+                    </td>                                                                                                    
                 </tr>  
 <?php } ?>               
             </tbody>
