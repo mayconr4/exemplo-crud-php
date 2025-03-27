@@ -9,7 +9,10 @@ function listarProdutos(PDO $conexao):array {
       
     FROM produtos 
     INNER JOIN fabricantes ON produtos.fabricante_id =fabricantes.id 
-    ORDER BY produto"  ; 
+    ORDER BY produto"   ;  
+
+      
+    //preco, quantidade, (preco * quantidade) AS total FROM produtos
 
     try {
         $consulta = $conexao->prepare($sql); 
@@ -18,4 +21,6 @@ function listarProdutos(PDO $conexao):array {
     } catch (Exception $erro) {
         die("Erro ao excluir fabricante: ".$erro->getMessage());
     }
-}
+}    
+
+
