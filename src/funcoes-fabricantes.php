@@ -60,7 +60,7 @@ function listarUmFabricante(PDO $conexao, int $idfabricante):array {
 }
  
 // atualizarFabricante
-function atualizarFabricante(PDO $conexao, $idFabricante, $nomeFabricante):void {
+function atualizarFabricante(PDO $conexao,  int $idFabricante,string $nomeFabricante):void {
    $sql = "UPDATE fabricantes SET nome = :nome WHERE id = :id"; 
 
    try{ 
@@ -75,7 +75,7 @@ function atualizarFabricante(PDO $conexao, $idFabricante, $nomeFabricante):void 
 } 
 
 // excluir fabricante: usada em fabricantes/xecluir.php
-function excluirFabricante($conexao, $idFabricante):void{ 
+function excluirFabricante(PDO $conexao, int $idFabricante):void{ 
    $sql = "DELETE FROM fabricantes WHERE id = :id"; 
 
    try {

@@ -33,7 +33,7 @@ $listaDeProdutos = listarProdutos($conexao);
                     <p> <b>preço:</b>  Do produto <?=$produto["preco"]?></p> 
                     <p><b>Quantidade:</b>do produto <?=$produto["quantidade"]?></p>                                                                 
                   </article>
-            </div> 
+            </div>  
             <?php }?> 
 
         </div>
