@@ -2,17 +2,15 @@
 require_once "conecta.php"; 
 
 function listarProdutos(PDO $conexao):array { 
-    $sql = "SELECT  
+    $sql = " SELECT  
     produtos.id , produtos.nome  AS produto, 
-     produtos.preco, produtos.quantidade, 
-      fabricantes.nome AS fabricante  
-      
+    produtos.preco, produtos.quantidade, 
+    fabricantes.nome AS fabricante , 
+    produtos.preco, produtos.quantidade, 
+    (produtos.preco * produtos.quantidade) AS total         
     FROM produtos 
     INNER JOIN fabricantes ON produtos.fabricante_id =fabricantes.id 
-    ORDER BY produto"   ;  
-
-      
-    //preco, quantidade, (preco * quantidade) AS total FROM produtos
+    ORDER BY produto";                                
 
     try {
         $consulta = $conexao->prepare($sql); 
