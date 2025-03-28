@@ -20,7 +20,9 @@ if (isset($_POST["inserir"])) {
 
     $descricao = filter_input( 
         INPUT_POST, "nome",FILTER_SANITIZE_FULL_SPECIAL_CHARS 
-    );
+    ); 
+
+    //inserirProduto( $conexao,  $nome, $preco, $quantidade, $descricao);
 
 
 
