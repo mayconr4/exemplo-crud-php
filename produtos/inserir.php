@@ -18,13 +18,13 @@ if (isset($_POST["inserir"])) {
         INPUT_POST, "quantidade",FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION
     );  
 
-    $descricao = filter_input( 
-        INPUT_POST, "descricao",FILTER_SANITIZE_FULL_SPECIAL_CHARS 
+    $detalhes = filter_input( 
+        INPUT_POST, "detalhes",FILTER_SANITIZE_FULL_SPECIAL_CHARS 
     );  
-
+    //obs.: lembre-se que capturamos na verdade o value (que na p´ratica é o id do fabricante)
     $idFabricante = filter_input(INPUT_POST, "fabricante", FILTER_SANITIZE_NUMBER_INT);
 
-    inserirProduto( $conexao,  $nome, $preco, $quantidade, $idFabricante , $descricao);  
+    inserirProduto( $conexao,  $nome, $preco, $quantidade, $idFabricante , $detalhes);  
      header("location:visualizar.php");
     exit; //equivalente ao die  
 
