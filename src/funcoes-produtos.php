@@ -20,7 +20,7 @@ function listarProdutos(PDO $conexao):array {
         die("Erro ao excluir fabricante: ".$erro->getMessage());
     }
 }    
-
+//inserindo produto
 function inserirProduto( 
     PDO $conexao, string $nome, float $preco, 
      int $quantidade , int $idFabricante, string $detalhes 
@@ -48,3 +48,18 @@ function inserirProduto(
         
         
     }
+ 
+// listatUmProduto 
+function listarUmproduto(PDO $conexao, int $idProduto ): array{ 
+    $sql = "SELECT * FROM produtos WHERE id = :id" ;
+
+    try{ 
+        $consulta = $conexao->prepare($sql); 
+        $consulta->bindValue(":id", $idProduto, PDO::PARAM_INT); 
+        $consulta->execute(); 
+
+        return $consulta->fetch(PDO::FETCH_ASSOC); 
+    } catch(Exception $erro){ 
+        die("Erro ao arregar produtos:".$erro->getMessage());
+    }
+}
