@@ -10,30 +10,25 @@ if (isset($_POST["inserir"])) {
         INPUT_POST, "nome",FILTER_SANITIZE_FULL_SPECIAL_CHARS
     ); 
 
-    $preco = filter_var( 
+    $preco = filter_input( 
         INPUT_POST, "preco",FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION
     );   
 
-    $quantidade = filter_var( 
-        INPUT_POST, "preco",FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION
+    $quantidade = filter_input( 
+        INPUT_POST, "quantidade",FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION
     );  
 
     $descricao = filter_input( 
-        INPUT_POST, "nome",FILTER_SANITIZE_FULL_SPECIAL_CHARS 
-    ); 
+        INPUT_POST, "descricao",FILTER_SANITIZE_FULL_SPECIAL_CHARS 
+    );  
 
-    //inserirProduto( $conexao,  $nome, $preco, $quantidade, $descricao);
+    $idFabricante = filter_input(INPUT_POST, "fabricante", FILTER_SANITIZE_NUMBER_INT);
 
+    inserirProduto( $conexao,  $nome, $preco, $quantidade, $idFabricante , $descricao);  
+     header("location:visualizar.php");
+    exit; //equivalente ao die  
 
-
-
-
-
-    //chamar a função responsável por inserir o produto e passar os parâmetros 
-
-    // não esquecer de terminar a função  InseririProduto()
-
-    // por fim, redirecionar para visualização dos produtos
+    
 }
 ?>
 <!DOCTYPE html>
