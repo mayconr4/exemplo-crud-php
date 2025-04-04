@@ -5,7 +5,7 @@ require_once "../src/funcoes-produtos.php";
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT); 
 
 // chamando a função para obter dados de um produto 
-$produto = listarUmproduto($conexao,  $id );
+$produto = listarUmproduto($conexao,  $id ); 
 
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ $produto = listarUmproduto($conexao,  $id );
             </div>
             <div class="mb-3">
                 <label class="form-label" for="descricao">Descrição:</label> <br>
-                <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="3"><?= htmlspecialchars($produto['detalhes'] ?? '') ?></textarea>
+                <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="3"><?=$produto['detalhes']?></textarea>
             </div>
             <button class="btn btn-warning" type="submit" name="atualizar">Atualizar produto</button>
         </form>
