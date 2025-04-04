@@ -15,7 +15,7 @@ if (isset($_POST["inserir"])) {
     );   
 
     $quantidade = filter_input( 
-        INPUT_POST, "quantidade",FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION
+        INPUT_POST, "quantidade",FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_ALLOW_FRACTION
     );  
 
     $detalhes = filter_input( 

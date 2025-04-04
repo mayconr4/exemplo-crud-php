@@ -21,17 +21,25 @@ if(isset($_POST['atualizar'])){
     );   
 
     $quantidade = filter_input( 
-        INPUT_POST, "quantidade",FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION
-    );  
+        INPUT_POST, "quantidade",FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_ALLOW_FRACTION
+    ); 
+      
+    $idFabricante = filter_input(INPUT_POST, "fabricante", FILTER_SANITIZE_NUMBER_INT);
 
     $detalhes = filter_input( 
         INPUT_POST, "detalhes",FILTER_SANITIZE_FULL_SPECIAL_CHARS 
     );  
-    //obs.: lembre-se que capturamos na verdade o value (que na pratica é o id do fabricante)
-    $idFabricante = filter_input(INPUT_POST, "fabricante", FILTER_SANITIZE_NUMBER_INT); 
 
-    atualizarProduto($conexao, $id, $nome, $preco, $quantidade, $detalhes , $idFabricante);
-}
+    // obs.: lembre-se que capturamos na verdade o value (que na pratica é o id do fabricante)
+     
+
+    atualizarProduto($conexao, $id, $nome, $preco, $quantidade, $idFabricante , $detalhes);        
+
+    header("location:visualizar.php");
+    exit;
+} 
+
+
 
 ?>
 <!DOCTYPE html>
@@ -88,8 +96,8 @@ if(isset($_POST['atualizar'])){
                 </select>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="descricao">Descrição:</label> <br>
-                <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="3"><?=$produto['detalhes']?></textarea>
+                <label class="form-label" for="detalhes">Detalhes:</label> <br>
+                <textarea class="form-control" name="detalhes" id="detalhes" cols="30" rows="3"><?=$produto['detalhes']?></textarea>
             </div>
             <button class="btn btn-warning" type="submit" name="atualizar">Atualizar produto</button>
         </form>
