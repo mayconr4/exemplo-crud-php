@@ -62,4 +62,10 @@ function listarUmproduto(PDO $conexao, int $idProduto ): array{
 
         die("Erro ao carregar produtos:".$erro->getMessage());
     }
+} 
+
+// atualizar um produto
+function atualizarProduto(PDO $conexao, int $idProduto, string $nomeProduto, float $precoProduto, float $quantidadeProduto, int $idFabricante, string $descricaoProduto ):void { 
+    $sql = "UPDATE produtos SET "
+
 }

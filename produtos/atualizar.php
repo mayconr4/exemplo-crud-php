@@ -8,7 +8,30 @@ $listaDeFabricantes = listarFabricantes($conexao);
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT); 
 
 // chamando a função para obter dados de um produto 
-$produto = listarUmproduto($conexao,  $id ); 
+$produto = listarUmproduto($conexao,  $id );   
+
+if(isset($_POST['atualizar'])){
+
+    $nome = filter_input( 
+        INPUT_POST, "nome",FILTER_SANITIZE_FULL_SPECIAL_CHARS
+    ); 
+
+    $preco = filter_input( 
+        INPUT_POST, "preco",FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION
+    );   
+
+    $quantidade = filter_input( 
+        INPUT_POST, "quantidade",FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION
+    );  
+
+    $detalhes = filter_input( 
+        INPUT_POST, "detalhes",FILTER_SANITIZE_FULL_SPECIAL_CHARS 
+    );  
+    //obs.: lembre-se que capturamos na verdade o value (que na pratica é o id do fabricante)
+    $idFabricante = filter_input(INPUT_POST, "fabricante", FILTER_SANITIZE_NUMBER_INT); 
+
+    atualizarProduto($conexao, $id, $nome, $preco, $quantidade, $detalhes , $idFabricante);
+}
 
 ?>
 <!DOCTYPE html>
