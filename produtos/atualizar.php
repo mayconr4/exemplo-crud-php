@@ -1,6 +1,9 @@
 <?php 
 require_once "../src/funcoes-produtos.php"; 
 
+require_once "../src/funcoes-fabricantes.php";
+$listaDeFabricantes = listarFabricantes($conexao);
+
 //obtendo o valor do parametro via url
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT); 
 
@@ -40,10 +43,25 @@ $produto = listarUmproduto($conexao,  $id );
             <div class="mb-3">
                 <label class="form-label" for="fabricante">Fabricante:</label>
                 <select class="form-select" name="fabricante" id="fabricante" required>
-                    <option value=""></option>
-                    <option value="">Fabricante 1...</option>
-                    <option value="">Fabricante 2...</option>
-                    <option value="">Fabricante 3...</option>
+                    <option value=""></option> 
+                    <!-- sempe manter um option vazio --> 
+
+                    <!-- Algoritimo para seleção do fabricante do produto que srá editado  
+                     
+                    Se a fk da tabela produtos for igual  a PK da tabela fabricantes,
+                    ouseja, se o id do fabricante do produto for igual a id 
+                    do fabricane, então coloque o atributo "selected" no <otion> correspondente-> -->
+                     
+                <?php foreach($listaDeFabricantes as $fabricante): ?>
+                     <option   
+        <?php if($produto['fabricante_id'] === $fabricante['id']) echo " selected "
+         // botar um espaço antes e depois do atributo SEMPRE?> 
+
+                         value="<?=$fabricante['id']?>">
+                        <?=$fabricante['nome']?>    
+                    </option> 
+                <?php endforeach; ?>
+                    
                 </select>
             </div>
             <div class="mb-3">
